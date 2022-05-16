@@ -50,10 +50,10 @@ export default function Home({ posts }) {
 export async function getStaticProps() {
   // const res = await fetch('https://redbytes.co.uk/wp-json/wp/v2/posts?per_page=100')
   // const res = await fetch('https://redbytes.co.uk/wp-json/wp/v2/posts?page=3')
-  // const res = await fetch("https://redbytes.co.uk/wp-json/wp/v2/posts");
+  const res = await fetch("https://probytes.net/wp-json/wp/v2/posts");
   // const res = await fetch("https://redbytes.co.uk/wp-json/wp/v2/posts?_embed");
   // const res = await fetch(process.env.BASE_SITEURL + "wp-json/wp/v2/posts?per_page=150");
-  const res = await fetch(process.env.BASE_SITEURL + "wp-json/wp/v2/posts");
+  // const res = await fetch(process.env.BASE_SITEURL + "wp-json/wp/v2/posts");
   const posts = await res.json();
 
   return {

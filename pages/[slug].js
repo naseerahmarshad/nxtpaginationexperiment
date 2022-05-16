@@ -30,8 +30,8 @@ export default function PostDetails({ singlepost }) {
 
 export async function getStaticPaths() {
   // const res = await fetch(process.env.BASE_SITEURL + "wp-json/wp/v2/posts?per_page=150");
-  const res = await fetch(process.env.BASE_SITEURL + "wp-json/wp/v2/posts");
-  // const res = await fetch("https://redbytes.co.uk/wp-json/wp/v2/posts");
+  // const res = await fetch(process.env.BASE_SITEURL + "wp-json/wp/v2/posts");
+  const res = await fetch("https://probytes.net/wp-json/wp/v2/posts");
   // const res = await fetch("https://redbytes.co.uk/wp-json/wp/v2/posts?page=3");
   const posts = await res.json();
 
@@ -39,11 +39,12 @@ export async function getStaticPaths() {
     params: { slug: post.slug },
   }));
 
-  return { paths, fallback: true };
+  return { paths, fallback: 'blocking' };
 }
 
 export async function getStaticProps({ params }) {
-  const res = await fetch(process.env.BASE_SITEURL + `wp-json/wp/v2/posts?slug=${params.slug}`);
+  // const res = await fetch(process.env.BASE_SITEURL + `wp-json/wp/v2/posts?slug=${params.slug}`);
+  const res = await fetch(`https://probytes.net/wp-json/wp/v2/posts?slug=${params.slug}`);
   const singlepost = await res.json();
   return {
     props: {
